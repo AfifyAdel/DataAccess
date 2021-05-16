@@ -45,7 +45,8 @@ namespace DataAccessAPI
             );
             //Repositories Inject
             //services.AddScoped<IUserRepository, DataAccess.EntityFramework.UserRepository>();
-            services.AddScoped<IUserRepository, DataAccess.Dapper.UserRepository>();
+            //services.AddScoped<IUserRepository, DataAccess.Dapper.UserRepository>();
+            services.AddScoped<IUserRepository, DataAccess.ADO.Net.UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
