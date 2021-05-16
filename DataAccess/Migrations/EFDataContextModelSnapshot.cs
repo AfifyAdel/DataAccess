@@ -28,11 +28,13 @@ namespace DataAccess.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FullName")
-                        .HasColumnType("character varying")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("fullname");
 
                     b.Property<string>("Password")
-                        .HasColumnType("character varying")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("password");
 
                     b.Property<int?>("Role")
@@ -40,7 +42,8 @@ namespace DataAccess.Migrations
                         .HasColumnName("role");
 
                     b.Property<string>("Username")
-                        .HasColumnType("character varying")
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)")
                         .HasColumnName("username");
 
                     b.HasKey("ID");

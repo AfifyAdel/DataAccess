@@ -12,9 +12,9 @@ namespace DataAccess.Migrations
                 {
                     id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    username = table.Column<string>(type: "character varying", nullable: true),
-                    password = table.Column<string>(type: "character varying", nullable: true),
-                    fullname = table.Column<string>(type: "character varying", nullable: true),
+                    username = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    password = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
+                    fullname = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: true),
                     role = table.Column<int>(type: "integer", nullable: true)
                 },
                 constraints: table =>

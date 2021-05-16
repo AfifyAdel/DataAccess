@@ -13,12 +13,15 @@ namespace Domain.Entities
         [Column("id", TypeName = "bigint")]
         public long ID { get; set; }
 
+        [MaxLength(50)]
         [Column("username", TypeName = "character varying")]
         public string Username { get; set; }
 
+        [MaxLength(50)]
         [Column("password", TypeName = "character varying")]
         public string Password { get; set; }
 
+        [MaxLength(50)]
         [Column("fullname", TypeName = "character varying")]
         public string FullName { get; set; }
 
