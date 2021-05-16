@@ -1,10 +1,10 @@
 using DataAccess.Context;
-using DataAccess.EntityFramework;
 using Domain.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -35,10 +36,16 @@ namespace DataAccessAPI
             //{
             //    c.SwaggerDoc("v1", new OpenApiInfo { Title = "DataAccessAPI", Version = "v1" });
             //});
-            services.AddScoped(typeof(EFDataContext));
 
+            //EntityFrameWork
+            services.AddScoped(typeof(EFDataContext));
+            //Dapper
+            services.AddScoped<IDbConnection>(
+               (sp) => new SqlConnection(Configuration.GetConnectionString("DefaultConnection"))
+            );
             //Repositories Inject
-            services.AddScoped<IUserRepository, UserRepository>();
+            //services.AddScoped<IUserRepository, DataAccess.EntityFramework.UserRepository>();
+            services.AddScoped<IUserRepository, DataAccess.Dapper.UserRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
