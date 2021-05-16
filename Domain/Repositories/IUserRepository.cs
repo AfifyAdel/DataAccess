@@ -9,7 +9,7 @@ namespace Domain.Repositories
     public interface IUserRepository
     {
         Task<List<User>> GetUsers();
-        Task<long> Insert(User user);
+        Task<bool> Insert(User user);
         void Update(User user);
         void Delete(long id);
     }
